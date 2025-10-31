@@ -1,0 +1,175 @@
+html {
+  box-sizing: border-box; /* hace que padding y border cuenten dentro del ancho total */
+}
+
+body, main, article, section, header, footer, nav, img, p, h1, h2 {
+  box-sizing: inherit;  /* heredan el tipo de caja del html */
+  margin: 0;            /* quita márgenes por defecto */
+  padding: 0;           /* quita relleno por defecto */
+}
+
+
+.barra {
+  background-color: rgb(14, 8, 63); /* color de fondo negro */
+  height: 50px;            /* altura fija de 50 píxeles */
+  width: 100%;             /* ocupa todo el ancho de la pantalla */
+}
+
+.cabecera img {
+  display: block; /* convierte la imagen en bloque para quitar espacios raros debajo */
+  width: 100%;    /* la imagen ocupa todo el ancho disponible */
+  height: auto;   /* mantiene la proporción original */
+}
+
+
+main, article {
+  max-width: 700px;   /* limita el ancho máximo del texto a 700 píxeles */
+  width: 90%;         /* usa el 90% del ancho de la pantalla en dispositivos pequeños */
+  margin: 0 auto;     /* centra horizontalmente el contenido */
+  overflow: visible;  /* permite que las imágenes grandes sobresalgan sin cortarse */
+}
+
+
+ h1, h2 {
+  text-align: center; /* centra el texto */
+  font-weight: 100;   /* usa una fuente muy fina */
+  margin: 0;          /* elimina márgenes automáticos del navegador */
+}
+
+ h1 {
+  font-family: Georgia, "Times New Roman", Times, serif; /* fuente con serifas para estilo periódico */
+  font-size: 50px;      /* tamaño grande del titular */
+  line-height: 1.15;    /* interlineado ajustado del titular */
+  margin-top: 24px;     /* espacio superior */
+  margin-bottom: 12px;  /* espacio inferior */
+}
+
+ h2 {
+  font-family: Arial, Helvetica, sans-serif; /* fuente sin serifas para contraste */
+  font-size: 16px;       /* tamaño del subtítulo */
+  line-height: 1.5;      /* interlineado más aireado */
+  color: #666;           /* tono gris medio */
+  max-width: 60ch;       /* limita la longitud a unas 60 letras por línea */
+  margin: 0 auto 18px;   /* centrado y espacio inferior */
+}
+
+
+.titulo img {
+  display: block;     /* imagen como bloque (sin huecos alrededor) */
+  width: 90%;         /* ocupa el 90% del ancho del contenedor */
+  height: auto;       /* mantiene proporción */
+  margin: 16px auto 0; /* centrada y con espacio arriba */
+}
+
+
+.capitular::first-letter {
+  float: left;                /* la letra se coloca a la izquierda del texto */
+  font-size: 120px;           /* tamaño grande → prueba entre 100 y 120px */
+  font-weight: 900;           /* negrita fuerte */
+  line-height: 0.8;           /* ajusta altura de la letra dentro del bloque */
+  margin-right: 10px;         /* espacio entre la letra y el texto */
+  margin-top: 4px;            /* baja un poco la letra para alinear visualmente */
+  color: black;               /* color negro */
+  font-family:Verdana, Geneva, Tahoma, sans-serif /* estilo editorial */
+}
+
+p {
+  font-family: Verdana, Geneva, Tahoma, sans-serif; /* fuente legible de pantalla */
+  font-size: 12px;     /* tamaño del texto */
+  line-height: 2;      /* interlineado doble para buena lectura */
+  font-weight: 100;    /* grosor fino */
+  color: #333;         /* gris oscuro (no negro puro) */
+  margin: 0 0 1.1em;   /* separación inferior entre párrafos */
+}
+
+
+article img {
+  display: block;    /* imagen como bloque */
+  width: 100%;       /* igual ancho que el texto */
+  height: auto;      /* mantiene proporción */
+  margin: 24px auto; /* separadas del texto y centradas */
+}
+
+
+article img.fig-wide {
+  width: 125%;               /* más ancha que el texto */
+  max-width: none;           /* no limita el ancho al contenedor */
+  position: relative;        /* permite moverla con left */
+  left: 50%;                 /* lleva el borde izquierdo al centro del contenedor */
+  transform: translateX(-50%); /* la desplaza hacia la izquierda la mitad de su ancho → queda centrada visualmente */
+  margin: 32px 0;            /* espacio arriba y abajo */
+}
+
+img.fin {
+  width: 100; margin-top: 50px; margin-bottom: 100 px;
+}
+
+
+footer {
+  background-color: #f5f5f5;      /* fondo gris claro igual que El País */
+  color: #333;      
+  margin-bottom: 100 px;  
+  margin-top:  50px;}
+
+footer .info-link {
+  font-size: 12px;        /* tamaño del “Más información” */
+}
+
+
+footer .pie p {
+  display: flex;                  /* coloca texto e “info” en una sola línea */
+  justify-content: space-between; /* separa izquierda/derecha */
+  align-items: center;            /* centra verticalmente los elementos */
+  max-width: 700px;               /* limita el ancho al mismo del artículo */
+  height: 30px ;   
+  font-size: 12px;          
+}
+
+
+footer a {
+  text-decoration: none;          /* sin subrayado */
+  color: #0a6db5;                 /* azul tipo enlace */
+  border-bottom: none
+}
+
+footer a:hover {
+  text-decoration: underline;     /* subrayado al pasar el ratón */
+}
+
+.info-link {
+  font-weight: 600;               /* texto un poco más grueso */
+}
+
+strong { font-weight: 900; 
+}
+
+a {font-weight: 900; 
+  color: black; text-decoration: none; 
+  border-bottom: 1px dotted black;
+}
+
+.grande {font-size: 14pt;font-weight: bolder;
+}
+
+
+
+
+
+
+
+
+
+
+
+@media (min-width: 768px) {
+  p {
+    font-size: 15px;  /* aumenta tamaño del texto en pantallas mayores */
+    line-height: 1.8; /* interlineado más compacto */
+  }
+  .titulo h1 { font-size: 56px; } /* hace el titular un poco más grande */
+  .titulo h2 { font-size: 18px; } /* y también el subtítulo */
+
+/* ============ Ajustes para pantallas grandes ============ */
+@media (min-width: 1024px) {
+  main, article { max-width: 760px; } /* da más aire lateral en escritorio */
+} }
