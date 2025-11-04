@@ -1,0 +1,64 @@
+
+html, body { margin: 0; padding: 0; } /* quitamos márgenes por defecto del navegador */
+body { font: 150 px; font-family: Arial, Helvetica, sans-serif; } 
+
+
+header { padding: 12px 16px; margin: 0 auto; background-color: black;} /* centramos y damos aire arriba */
+header h1 { margin-top: 30px; margin-bottom: 20px ; font-size: 110px; text-align: center; color: #f4f4f4; font-weight: 300;line-height: 0.8; } /* eliminamos margen extra del h1 */
+header p{ margin-bottom: 50px; font-size: 10px; text-align: justify; color: grey; font-family:monospace ;}
+
+
+.galeria {
+  width: min(100%, 1000px);  /* limita ancho máximo y se adapta en móvil */
+  margin: 0 auto;            /* centra el bloque en la página */
+  padding: 16px;             /* separación interior */
+  display: grid;             /* activamos CSS Grid */
+  grid-template-columns: repeat(3, 1fr); /* 3 columnas en escritorio */
+  gap: 5px;                 /* espacio entre tarjetas */
+}
+
+.galeria h2 {
+  grid-column: 1 / -1;       /* el h2 ocupa todo el ancho del grid */
+  margin: 80 35px  80px;           /* separa del resto */
+  font-size: 25px;   color: white;       
+  font: weight 500;     
+  background-color: black;
+  text-align: center;
+}
+
+
+.galeria a {
+  display: block;            /* el enlace ocupa toda su “tarjeta” */
+  aspect-ratio: 1 / 1;       /* miniatura cuadrada sin HTML extra */
+  overflow:hidden;          /* recorta lo que sobresalga de la imagen */
+  background: #f4f4f4;       /* fondo de espera si la imagen tarda */
+  box-shadow: 0 1px 4px rgba(0,0,0,.06); /* sombrita suave */
+}
+
+/* ——— Miniatura ——— */
+.galeria a img {
+  width: 100%; height: 100%; /* la imagen rellena la tarjeta completa */
+  object-fit: cover;         /* recorta para encajar sin deformarse */
+  display: block;            /* elimina el hueco de imágenes inline */
+  filter: grayscale(100%);   /* requisito: desaturada por defecto */
+  transition: filter .25s ease, transform .25s ease; /* animación suave */
+}
+
+
+.galeria a:hover img {
+  filter: none;              /* al pasar el ratón vuelve a color (requisito) */
+  transform: scale(1.04);    /* micro-zoom */
+}
+
+.galeria a:focus-visible {
+  outline: 3px solid #0a6db5;  /* contorno accesible con teclado */
+  outline-offset: 2px;         /* separa el contorno del borde */
+}
+
+
+@media (max-width: 900px) {
+  .galeria { grid-template-columns: repeat(2, 1fr); } /* 2 columnas en tablet */
+}
+@media (max-width: 520px) {
+  .galeria { grid-template-columns: 1fr; }            /* 1 columna en móvil */
+}
