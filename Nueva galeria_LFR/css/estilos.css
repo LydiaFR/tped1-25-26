@@ -1,0 +1,138 @@
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+@font-face {
+  font-family: "MiFuente";
+  src: url("../tipografia/Megren.ttf") format("truetype"),
+       url("../tipografia/Megren.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "MiFuente";
+  src: url("../tipografia/Megren.ttf") format("truetype"),
+       url("../tipografia/Megren.otf") format("opentype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+
+:root{
+  --gap: 52px;
+}
+body{
+  font-family: "MiFuente", sans-serif;
+}
+ h1{
+  text-align: center;
+  margin-top: 150px;
+  color:#b41212 ;
+  font-size: clamp(3rem, 8vw, 10rem);
+  }
+
+  h2{ 
+    text-align:center;
+    margin-top: -3px;
+    font-family: "MiFuente";
+    color: #bd0c0c;
+    margin-bottom: 150px;
+    font-size: clamp(0.4rem, 0.3vw, 2rem )
+}
+
+.container{
+  max-width: 1500px;
+  margin: 24px auto;
+  padding: 0 16px;
+}
+
+
+.row{
+  display: flex;
+  flex-wrap: wrap;            
+  gap: var(--gap);
+  margin-bottom: var(--gap);
+}
+
+
+.item{
+  flex: 1 1 calc(33.333% - (var(--gap) * 2 / 3));
+  min-width: 0;              
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+
+.link-item{
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+
+figcaption{
+  color: #b41212;           
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  font-size: 0.7rem;
+  padding: 8px 12px;
+}
+strong {font-size:x-large;}
+
+.small{
+  font-size: 0.7rem;
+}
+
+
+
+@media (max-width: 640px){
+  .item{
+    flex: 1 1 100%;          
+  }
+}
+
+
+body{
+  background-image: url(../img/cielo.png);
+  background-size: cover;
+  background-position: center;
+}
+
+
+.item img{
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  aspect-ratio: 16 / 10;
+  transition: transform .28s ease, filter .28s ease;
+  transform-origin: center top; 
+  position: relative;
+  z-index: 1; 
+}
+
+
+.item:hover img,
+.item:focus-within img{
+  transform: scale(1.10);
+}
+
+
+.item figcaption{
+  position: relative; 
+  z-index: 3;        
+  opacity: 0;         
+  transition: opacity .25s ease;
+  pointer-events: none;
+}
+
+
+.item:hover figcaption,
+.item:focus-within figcaption{
+  opacity: 1;
+  pointer-events: auto;
+}

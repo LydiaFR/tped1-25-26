@@ -1,0 +1,108 @@
+
+
+@font-face {
+  font-family: "MiFuente";
+  src: url("../tipografia/Megren.ttf") format("truetype"),
+       url("../tipografia/Megren.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "MiFuente";
+  src: url("../tipografia/Megren.ttf") format("truetype"),
+       url("../tipografia/Megren.otf") format("opentype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+
+
+body{font-family: "MiFuente", sans-serif;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+
+.full {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;      
+  justify-content: center;  
+}
+
+
+.full-img {
+  max-width: 92vw;    
+  max-height: 86vh;    
+  width: auto;
+  height: auto;
+  object-fit: contain; 
+  display: block;
+  transform-origin: center;
+  z-index: 10;
+  opacity: 0.5;
+  filter: saturate(70%)
+
+}
+
+
+@media (max-width: 1000px) {
+  .full-img {
+    transform: scale(1.03);
+    max-width: 94vw;
+    max-height: 80vh;
+  }
+}
+
+
+
+.overlay {
+  position: absolute;
+  z-index: 30;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%); 
+  text-align: center;
+  color: #ca0d0d;                   
+  pointer-events: none;
+  padding: 0 18px;
+  width: 92%;
+  box-sizing: border-box;
+}
+
+
+.overlay h1 {margin: 0 0 10px;
+  line-height: 1;
+  font-weight: 700;
+  font-size: clamp(48px, 12vw, 200px);
+}
+
+.overlay p {
+  margin: 0;
+  font-size: clamp(14px, 2.2vw, 20px);
+  opacity: 3;
+ font-weight: bold;
+}
+
+
+.back {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  z-index: 50;
+  text-decoration: none;
+  color: #fff;
+  background: rgb(188, 3, 3);
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 10px;
+
+}

@@ -1,64 +1,121 @@
+/* Reset general: hace que todos los elementos calculen medidas igual */
+* { box-sizing: border-box; }  /* El padding y border se incluyen dentro del width/height */
 
-html, body { margin: 0; padding: 0; } /* quitamos márgenes por defecto del navegador */
-body { font: 150 px; font-family: Arial, Helvetica, sans-serif; } 
+/* Eliminar márgenes automáticos del navegador */
+html, body { margin: 0; padding: 0; }  /* Quita márgenes por defecto */
 
+/* Estilo general del body */
+body {
+  font-family: Arial, Helvetica, sans-serif;  /* Tipografía básica, estándar */
+  background: #f4f4f4;                        /* Fondo gris claro */
+  color: #222;                                /* Texto gris oscuro */
+}
 
-header { padding: 12px 16px; margin: 0 auto; background-color: black;} /* centramos y damos aire arriba */
-header h1 { margin-top: 30px; margin-bottom: 20px ; font-size: 110px; text-align: center; color: #f4f4f4; font-weight: 300;line-height: 0.8; } /* eliminamos margen extra del h1 */
-header p{ margin-bottom: 50px; font-size: 10px; text-align: justify; color: grey; font-family:monospace ;}
+/* ----- CABECERA ----- */
 
+/* Bloque principal de la cabecera */
+header {
+  background: black;       /* Fondo negro */
+  color: white;            /* Texto blanco */
+  text-align: center;      /* Centra el contenido */
+  padding: 20px;           /* Espacio interior */
+}
 
+/* Texto pequeño superior dentro del header */
+header p {
+  margin: 0;               /* Elimina márgenes para que no empuje nada */
+  font-size: 12px;         /* Tamaño pequeño */
+  color: #bbb;             /* Gris claro */
+}
+
+/* Título principal dentro del header */
+header h1 {
+  margin: 10px 0 0;        /* Espacio arriba, nada a los lados */
+  font-weight: 300;        /* Grosor de la letra (ligero) */
+  font-size: 32px;         /* Tamaño del título */
+}
+
+/* ----- GALERÍA PRINCIPAL ----- */
+
+/* Contenedor de toda la galería */
 .galeria {
-  width: min(100%, 1000px);  /* limita ancho máximo y se adapta en móvil */
-  margin: 0 auto;            /* centra el bloque en la página */
-  padding: 16px;             /* separación interior */
-  display: grid;             /* activamos CSS Grid */
-  grid-template-columns: repeat(3, 1fr); /* 3 columnas en escritorio */
-  gap: 5px;                 /* espacio entre tarjetas */
+  max-width: 1000px;                        /* Ancho máximo del contenido */
+  margin: 20px auto;                        /* Centrado horizontal + margen vertical */
+  padding: 10px;                            /* Espacio interno */
+  display: grid;                            /* Activa GRID */
+  grid-template-columns: repeat(3, 1fr);    /* 3 columnas iguales */
+  gap: 20px;                                /* Separación entre tarjetas */
 }
 
-.galeria h2 {
-  grid-column: 1 / -1;       /* el h2 ocupa todo el ancho del grid */
-  margin: 80 35px  80px;           /* separa del resto */
-  font-size: 25px;   color: white;       
-  font: weight 500;     
-  background-color: black;
-  text-align: center;
+/* ----- TARJETA (cada imagen + texto) ----- */
+
+/* Contenedor de cada item de la galería */
+.item {
+  background: white;                         /* Fondo blanco de la tarjeta */
+  padding: 10px;                             /* Espacio interior */
+  border-radius: 6px;                        /* Bordes suavizados */
+  box-shadow: 0 0 6px rgba(0,0,0,0.1);       /* Sombra suave */
+  display: flex;                             /* Para apilar elementos verticalmente */
+  flex-direction: column;                    /* Imagen arriba, texto abajo */
 }
 
+/* ----- MINIATURA EN CUADRADO ----- */
 
-.galeria a {
-  display: block;            /* el enlace ocupa toda su “tarjeta” */
-  aspect-ratio: 1 / 1;       /* miniatura cuadrada sin HTML extra */
-  overflow:hidden;          /* recorta lo que sobresalga de la imagen */
-  background: #f4f4f4;       /* fondo de espera si la imagen tarda */
-  box-shadow: 0 1px 4px rgba(0,0,0,.06); /* sombrita suave */
+/* Contenedor cuadrado de la imagen */
+.thumb {
+  width: 100%;               /* Ocupa todo el ancho disponible */
+  aspect-ratio: 1 / 1;       /* Mantiene un cuadrado perfecto */
+  overflow: hidden;          /* Oculta lo que sobresalga */
+  display: block;            /* Para que funcione como bloque */
+  background: #ddd;          /* Fondo gris claro si la imagen tarda en cargar */
+  border-radius: 4px;        /* Bordes suavizados */
 }
 
-/* ——— Miniatura ——— */
-.galeria a img {
-  width: 100%; height: 100%; /* la imagen rellena la tarjeta completa */
-  object-fit: cover;         /* recorta para encajar sin deformarse */
-  display: block;            /* elimina el hueco de imágenes inline */
-  filter: grayscale(100%);   /* requisito: desaturada por defecto */
-  transition: filter .25s ease, transform .25s ease; /* animación suave */
+/* Imagen dentro del cuadrado */
+.thumb img {
+  width: 100%;               /* La imagen ocupa todo el ancho */
+  height: 100%;              /* La imagen ocupa todo el alto */
+  object-fit: cover;         /* Recorta la imagen para ajustar sin deformación */
+  filter: grayscale(100%);   /* Blanco y negro por defecto */
+  transition:                /* Animación al pasar el ratón */
+    transform .3s ease,
+    filter .25s ease;
+  display: block;            /* Quita espacios invisibles */
 }
 
-
-.galeria a:hover img {
-  filter: none;              /* al pasar el ratón vuelve a color (requisito) */
-  transform: scale(1.04);    /* micro-zoom */
+/* Efecto al pasar el cursor */
+.thumb img:hover {
+  filter: none;              /* Vuelve a color */
+  transform: scale(1.05);    /* Pequeño zoom */
 }
 
-.galeria a:focus-visible {
-  outline: 3px solid #0a6db5;  /* contorno accesible con teclado */
-  outline-offset: 2px;         /* separa el contorno del borde */
+/* ----- TEXTOS BAJO LA IMAGEN ----- */
+
+/* Título de cada imagen */
+.item h3 {
+  margin: 10px 0 6px;        /* Separación respecto a la miniatura */
+  font-size: 16px;           /* Tamaño medio */
 }
 
-
-@media (max-width: 900px) {
-  .galeria { grid-template-columns: repeat(2, 1fr); } /* 2 columnas en tablet */
+/* Descripción corta */
+.item p {
+  margin: 0;                 /* Sin espacio extra abajo */
+  color: #666;               /* Gris suave */
+  font-size: 13px;           /* Tamaño pequeño */
 }
-@media (max-width: 520px) {
-  .galeria { grid-template-columns: 1fr; }            /* 1 columna en móvil */
+
+/* ----- RESPONSIVE ----- */
+
+/* Cuando la pantalla es más pequeña que 750px → 2 columnas */
+@media (max-width: 750px) {
+  .galeria {
+    grid-template-columns: repeat(2, 1fr);   /* Cambia a 2 columnas */
+  }
+}
+
+/* Cuando la pantalla es más pequeña que 500px → 1 columna */
+@media (max-width: 500px) {
+  .galeria {
+    grid-template-columns: 1fr;              /* Una sola columna */
+  }
 }
