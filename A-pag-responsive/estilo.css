@@ -1,0 +1,157 @@
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.5;
+  background-color: #ffffff;
+  color: #111;
+}
+
+
+
+.header {
+  background-color: #111;
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+}
+
+.header h1 {
+  font-size: 1.8rem;
+}
+
+.header p {
+  font-size: 1rem;
+  opacity: 0.8;
+}
+
+
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+
+.sidebar {
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+.sidebar h2 {
+  margin-bottom: 10px;
+}
+
+
+.content {
+  padding: 20px;
+}
+
+
+.project img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;          
+  object-position: center;    
+  display: block;    
+}         
+
+.projects {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 15px;
+}
+
+.project {
+  background-color: #ddd;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  height: 200px;              
+  overflow: hidden;           
+}
+
+
+
+
+.footer {
+  background-color: #111;
+  color: #fff;
+  text-align: center;
+  padding: 15px;
+  font-size: 0.9rem;
+}
+
+
+
+/* 📱 iPhone 12 horizontal */
+@media (min-width: 390px) {
+  .header h1 {
+    font-size: 2rem;
+  }
+
+  .project {
+    height: 220px;
+  }
+}
+
+/* 📱 iPad Air vertical */
+@media (min-width: 820px) {
+  .container {
+    flex-direction: row;
+  }
+
+  .sidebar {
+    width: 30%;
+  }
+
+  .content {
+    width: 70%;
+  }
+
+  .projects {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* 📱 iPad Air horizontal */
+@media (min-width: 1180px) {
+  .projects {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .header {
+    padding: 40px;
+  }
+}
+
+/* 💻 Ordenador portátil */
+@media (min-width: 1366px) {
+  body {
+    font-size: 18px;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: auto;
+  }
+}
+
+/* 🖥 Pantalla grande */
+@media (min-width: 1600px) {
+  .header h1 {
+    font-size: 3rem;
+  }
+
+  .project {
+    height: 280px;
+  }
+}
